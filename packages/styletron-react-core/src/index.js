@@ -13,7 +13,8 @@ import React, {createElement, Component} from "react";
 
 import createReactContext, {type Context} from "create-react-context";
 
-import {addDebugClass} from "./dev-tool.js";
+// window definition not allowed in react_on_rails
+// import {addDebugClass} from "./dev-tool.js";
 
 const StyletronContext: Context<any> = createReactContext();
 
@@ -155,9 +156,9 @@ export function createStyled<Style: Object, Engine>({
       getInitialStyle,
       wrapper,
     };
-    if (__BROWSER__ && __DEV__) {
-      addDebugClass(baseStyletron, 2);
-    }
+    // if (__BROWSER__ && __DEV__) {
+    //   addDebugClass(baseStyletron, 2);
+    // }
     return createStyledElementComponent(
       autoComposeShallow(baseStyletron, styleArg),
     );
@@ -175,9 +176,9 @@ export function withTransform<
   transformer: (style: Style, props: TransformerProps) => Style,
 ): styletronComponentT<Style, Props & TransformerProps, Base, Engine> {
   const styletron = (component: any).__STYLETRON__;
-  if (__BROWSER__ && __DEV__) {
-    addDebugClass(styletron, 2);
-  }
+  // if (__BROWSER__ && __DEV__) {
+  //   addDebugClass(styletron, 2);
+  // }
 
   return createStyledElementComponent(
     composeDynamic(styletron, {
@@ -204,9 +205,9 @@ export function withStyle<
   styleArg: styleArgT<Style, ReducerProps>,
 ): styletronComponentT<Style, Props & ReducerProps, Base, Engine> {
   const styletron = (component: any).__STYLETRON__;
-  if (__BROWSER__ && __DEV__) {
-    addDebugClass(styletron, 2);
-  }
+  // if (__BROWSER__ && __DEV__) {
+  //   addDebugClass(styletron, 2);
+  // }
   return createStyledElementComponent(autoComposeShallow(styletron, styleArg));
 }
 
@@ -221,9 +222,9 @@ export function withStyleDeep<
   styleArg: styleArgT<Style, ReducerProps>,
 ): styletronComponentT<Style, Props & ReducerProps, Base, Engine> {
   const styletron = (component: any).__STYLETRON__;
-  if (__BROWSER__ && __DEV__) {
-    addDebugClass(styletron, 2);
-  }
+  // if (__BROWSER__ && __DEV__) {
+  //   addDebugClass(styletron, 2);
+  // }
   return createStyledElementComponent(autoComposeDeep(styletron, styleArg));
 }
 
@@ -239,9 +240,9 @@ export function withWrapper<Style: Object, Props: Object, Base, Engine>(
     wrapper: wrapper,
     reducers: styletron.reducers,
   };
-  if (__BROWSER__ && __DEV__) {
-    addDebugClass(composed, 2);
-  }
+  // if (__BROWSER__ && __DEV__) {
+  //   addDebugClass(composed, 2);
+  // }
   return createStyledElementComponent(composed);
 }
 
